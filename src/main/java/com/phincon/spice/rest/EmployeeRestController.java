@@ -5,11 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.phincon.spice.model.RestHub;
 import com.phincon.spice.service.EmployeeService;
 
 @RestController
@@ -27,10 +30,10 @@ public class EmployeeRestController {
 		return new ResponseEntity<Object>(obj, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/remaining_day_off", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> remainingDayOff(@RequestHeader(value = "session") String session_id) throws Exception{
-		System.out.println("Request : "+session_id);
-		Object obj = employeeService.remainingDayOff(session_id);
+	@RequestMapping(value = "/remaining_day_off", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> remainingDayOff(@RequestBody RestHub restHub) throws Exception{
+		System.out.println("Request : "+restHub.getSession());
+		Object obj = employeeService.remainingDayOff(restHub);
 		return new ResponseEntity<Object>(obj, HttpStatus.OK);
 	}
 	

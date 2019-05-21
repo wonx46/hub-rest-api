@@ -33,10 +33,13 @@ public class EmployeeService {
 		return emp;
 	}
 	
-	public Object remainingDayOff(String session_id) {
-		RestHub restHub = new RestHub();
+	public Object remainingDayOff(RestHub restHub) {
+		String message [] = restHub.getMessage().split("#");
+		String email = message [0];
+		String pass =  message[1];
+		System.out.println("Email : "+email);
+		System.out.println("Password : "+pass);
 		restHub.setMessage("10");
-		restHub.setSession(session_id);
 		/*Employee emp = new Employee();
 		emp.setId(id);
 		emp.setName("Ade Priyanto");
