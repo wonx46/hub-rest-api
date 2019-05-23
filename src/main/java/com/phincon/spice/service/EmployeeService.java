@@ -49,7 +49,7 @@ public class EmployeeService {
 		}
 		
 		if(isUser) {
-			message.put("pesan", "10");
+			message.put("pesan", "sisa cuti tinggal 10 hari lagi. mw ngga phita kasih tw hari libur");
 		}
 		restHub.setMessage(message);
 		return restHub;
