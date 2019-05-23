@@ -1,5 +1,8 @@
 package com.phincon.spice.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -10,7 +13,7 @@ public class RestHub {
 	private String session;
 	
 	@JsonProperty("message")
-	private String message;
+	private Map<String, Object> message = new HashMap<>();
 
 	public String getSession() {
 		return session;
@@ -20,11 +23,12 @@ public class RestHub {
 		this.session = session;
 	}
 
-	public String getMessage() {
+	public Map<String, Object> getMessage() {
 		return message;
 	}
 
-	public void setMessage(String message) {
+	public void setMessage(Map<String, Object> message) {
 		this.message = message;
 	}
+	
 }
