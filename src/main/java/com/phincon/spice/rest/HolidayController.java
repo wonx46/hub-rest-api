@@ -19,7 +19,7 @@ public class HolidayController {
 	@Autowired
 	HolidayService holidayService;
 	
-	@RequestMapping(value = "/list_holiday", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/list_holiday", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> companyProfile(@RequestBody RestHub restHub) throws Exception{
 		
 		Object  out = holidayService.listHoliday(restHub);
