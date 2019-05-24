@@ -46,6 +46,7 @@ public class UserRepository {
 		User user = new User();
 		user.setUserName((String) row.get("user_name"));
 		user.setPassword((String) row.get("password"));
+		user.setName((String) row.get("name"));
 		
 		return user;
 	}

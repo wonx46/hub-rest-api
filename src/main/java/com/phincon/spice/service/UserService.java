@@ -1,5 +1,6 @@
 package com.phincon.spice.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class UserService {
 	
 	public Object login(RestHub restHub) {
 		Map<String, Object> message = restHub.getMessage();
+		Map<String, Object> response = new HashMap<>();
 		String username = (String) message.get("user");
 		String password = (String) message.get("pwd");
 		
@@ -28,8 +30,10 @@ public class UserService {
 				result = "success";
 			}
 		}
-		message.put("pesan", result);
-		restHub.setMessage(message);
+		response.put("status", result);
+		response.put("qtyparam", "1");
+		response.put("#0", user.getName());
+		restHub.setMessage(response);
 		return restHub;
 	}
 	

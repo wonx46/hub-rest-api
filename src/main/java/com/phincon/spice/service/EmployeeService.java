@@ -1,6 +1,7 @@
 package com.phincon.spice.service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,18 +41,24 @@ public class EmployeeService {
 	
 	public Object remainingDayOff(RestHub restHub) {
 		Map<String, Object> message = restHub.getMessage();
+		Map<String, Object> response = new HashMap<>();
 		String username = (String) message.get("user");
 		String password = (String) message.get("pwd");
 		
 		boolean isUser = false;
+		String result = "failed";
 		if(StringUtils.hasText(username) && StringUtils.hasText(password)) {
 			isUser = userService.authenticate(username, password);
 		}
 		
 		if(isUser) {
-			message.put("pesan", "sisa cuti tinggal 10 hari lagi. mw ngga phita kasih tw hari libur");
+			result = "success";
 		}
-		restHub.setMessage(message);
+		response.put("status", result);
+		response.put("qtyparam", "1");
+		response.put("#0", "10");
+		
+		restHub.setMessage(response);
 		return restHub;
 	}
 }
