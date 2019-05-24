@@ -55,7 +55,7 @@ public class EmployeeService {
 			result = "success";
 		}
 		response.put("status", result);
-		response.put("qtyparam", "1");
+		response.put("qtyparam", 1);
 		response.put("#0", "10");
 		
 		restHub.setMessage(response);

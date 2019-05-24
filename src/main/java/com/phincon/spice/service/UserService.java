@@ -31,7 +31,7 @@ public class UserService {
 			}
 		}
 		response.put("status", result);
-		response.put("qtyparam", "1");
+		response.put("qtyparam", 1);
 		response.put("#0", user.getName());
 		restHub.setMessage(response);
 		return restHub;
